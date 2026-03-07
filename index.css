@@ -380,6 +380,27 @@ body.layout-fullscreen {
   margin: 0 auto;
 }
 
+/* Portfolio Links */
+.portfolio-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.portfolio-links a {
+  color: var(--lg-palette-text-on-surface);
+  text-decoration: none;
+  font-size: clamp(16px, 3vw, 18px);
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: color var(--lg-glass-transition);
+}
+
+.portfolio-links a:hover {
+  color: var(--lg-palette-text-on-surface-secondary);
+}
+
 .layout-list .demo-section {
   width: 100%;
   margin-bottom: 0;
