@@ -10,10 +10,9 @@ This portfolio showcases a minimalist approach to web development, emphasizing t
 
 ### Architecture
 
-The project consists of four static HTML pages:
+The project consists of three static HTML pages:
 
-- `index.html` - Main portfolio entry point
-- `home.html` - Home page currently showcasing a featured project
+- `index.html` - Main portfolio entry point currently showcasing a featured project
 - `about.html` - Personal philosophy and values
 - `portfolio.html` - Links to a selection of projects
 
