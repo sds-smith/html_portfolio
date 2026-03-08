@@ -94,15 +94,26 @@ body {
 body {
   margin: 0;
   font-family: var(--lg-typography-font-family);
+  min-height: 100vh;
+  color: var(--lg-palette-text-primary);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("./IMG_5072.jpeg"), var(--lg-palette-background-fallback);
   background-size: auto 100vh;
   background-position: right;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-  color: var(--lg-palette-text-primary);
+  will-change: transform;
+  pointer-events: none;
 }
 
 header {
@@ -498,9 +509,11 @@ body:not(.layout-fullscreen) {
   }
 
   body {
-    background-attachment: scroll;
-    background-size: cover;
     height: auto;
+  }
+
+  body::before {
+    background-size: cover;
   }
 
   .desktop {
@@ -610,9 +623,11 @@ body:not(.layout-fullscreen) {
   }
 
   body {
-    background-attachment: scroll;
-    background-size: cover;
     height: auto;
+  }
+
+  body::before {
+    background-size: cover;
   }
 
   body.layout-fullscreen {
