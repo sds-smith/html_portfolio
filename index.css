@@ -543,6 +543,7 @@ body:not(.layout-fullscreen) {
   display: inline-flex;
   align-items: center;
   position: relative;
+  gap: 16px;
 }
 
 /* Direction variants */
