@@ -532,7 +532,7 @@ body:not(.layout-fullscreen) {
   }
 
   /* SpeedDial mobile: change direction to left */
-  .speed-dial.direction-up {
+  .speed-dial {
     flex-direction: row-reverse;
     --sd-closed-translate: translateX(16px);
   }
@@ -544,27 +544,8 @@ body:not(.layout-fullscreen) {
   align-items: center;
   position: relative;
   gap: 16px;
-}
-
-/* Direction variants */
-.speed-dial.direction-up {
   flex-direction: column-reverse;
   --sd-closed-translate: translateY(16px);
-}
-
-.speed-dial.direction-down {
-  flex-direction: column;
-  --sd-closed-translate: translateY(-16px);
-}
-
-.speed-dial.direction-left {
-  flex-direction: row-reverse;
-  --sd-closed-translate: translateX(16px);
-}
-
-.speed-dial.direction-right {
-  flex-direction: row;
-  --sd-closed-translate: translateX(-16px);
 }
 
 /* === FAB (Floating Action Button) === */
