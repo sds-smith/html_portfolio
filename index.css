@@ -462,6 +462,15 @@ body:not(.layout-fullscreen) {
   padding-bottom: 20px;
 }
 
+/* Desktop-specific positioning for demo-container */
+@media (min-width: 769px) {
+  .demo-container.layout-list {
+    width: 55%;
+    margin-left: 40px;
+    margin-right: auto;
+  }
+}
+
 .layout-list .portfolio-section:last-child,
 .demo-container.layout-list .demo-section:last-child {
   padding-bottom: 0;
