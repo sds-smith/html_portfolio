@@ -205,6 +205,47 @@
       </div>
     </div>
 
+    <!-- AboutApp Component -->
+    <div class="about-app">
+      <input type="checkbox" id="about-toggle" class="about-app-toggle" />
+      <label
+        for="about-toggle"
+        class="about-app-trigger"
+        role="button"
+        tabindex="0"
+      >
+        ?
+      </label>
+
+      <div class="about-app-popover">
+        <div class="about-app-copyright">© 2026 Shawn D Smith</div>
+        <div class="about-app-version">v1.0.0</div>
+
+        <hr class="about-app-divider" />
+
+        <div class="about-app-creditsTitle">About</div>
+        <p class="about-app-credit">
+          <strong>HTML Portfolio</strong><br />
+          A lightweight, responsive portfolio website built almost entirely with
+          HTML and CSS, featuring liquid glass styling effects.
+        </p>
+        <p class="about-app-credit">
+          <strong>Intent</strong><br />
+          This portfolio showcases a minimalist approach to web development,
+          emphasizing the power of pure CSS for creating sophisticated visual
+          effects without heavy JavaScript frameworks or build tools.
+        </p>
+        <p class="about-app-credit">
+          <strong>Design Philosophy</strong><br />
+          Demonstrates that sophisticated user interfaces can be achieved
+          without complex tooling or external dependencies. The liquid glass
+          effects are created entirely through CSS, showcasing the power of
+          modern web standards while maintaining exceptional performance and
+          accessibility.
+        </p>
+      </div>
+    </div>
+
     <script>
       // Handle FAB click to toggle checkbox
       document.querySelector(".fab").addEventListener("click", () => {

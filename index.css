@@ -885,3 +885,118 @@ body:not(.layout-fullscreen) {
     --sd-closed-translate: translateX(-16px) !important;
   }
 }
+
+/* === AboutApp Component === */
+.about-app {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1200;
+}
+
+.about-app-toggle {
+  display: none;
+}
+
+.about-app-trigger {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, border-color 150ms ease;
+  user-select: none;
+}
+
+.about-app-trigger:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.about-app-toggle:checked + .about-app-trigger {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.about-app-popover {
+  position: fixed;
+  bottom: 52px;
+  left: 48px;
+  z-index: 1200;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  font-size: 0.8rem;
+  color: var(--lg-palette-text-primary);
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 150ms ease, visibility 150ms ease, transform 150ms ease;
+  pointer-events: none;
+}
+
+.about-app-toggle:checked ~ .about-app-popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.about-app-copyright {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.about-app-version {
+  font-size: 0.7rem;
+  color: var(--lg-palette-text-secondary);
+  margin-bottom: 10px;
+}
+
+.about-app-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 10px 0;
+}
+
+.about-app-creditsTitle {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--lg-palette-text-secondary);
+}
+
+.about-app-credit {
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: var(--lg-palette-primary-main);
+}
+
+.about-app-credit a {
+  color: var(--lg-palette-primary-main);
+  text-decoration: none;
+}
+
+.about-app-credit a:hover {
+  text-decoration: underline;
+}
+
+/* === AboutApp Mobile Responsiveness === */
+@media (max-width: 768px) {
+  .about-app-popover {
+    width: 280px;
+    left: 16px;
+  }
+}
