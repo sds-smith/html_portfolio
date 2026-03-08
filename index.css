@@ -530,12 +530,6 @@ body:not(.layout-fullscreen) {
   .demo-container {
     grid-template-columns: 1fr;
   }
-
-  /* SpeedDial mobile: change direction to left */
-  .speed-dial {
-    flex-direction: row-reverse;
-    --sd-closed-translate: translateX(16px);
-  }
 }
 
 /* === SpeedDial Component === */
@@ -790,5 +784,13 @@ body:not(.layout-fullscreen) {
 @media (prefers-reduced-motion: reduce) {
   .speed-dial * {
     --lg-glass-transition-duration: 0ms !important;
+  }
+}
+
+/* === Mobile SpeedDial Override === */
+@media (max-width: 768px) {
+  .speed-dial {
+    flex-direction: row-reverse !important;
+    --sd-closed-translate: translateX(-16px) !important;
   }
 }
