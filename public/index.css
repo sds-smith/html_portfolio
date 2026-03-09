@@ -106,7 +106,7 @@ body::before {
   z-index: -1;
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("./background-image-profile.jpeg"), var(--lg-palette-background-fallback);
+    url("./assets/background-image-profile.jpeg"), var(--lg-palette-background-fallback);
   background-size: auto 100vh;
   background-position: right;
   background-repeat: no-repeat;
@@ -371,22 +371,16 @@ body:not(.layout-fullscreen) {
 .portfolio-links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 .portfolio-links a {
-  color: var(--lg-palette-text-on-surface);
   text-decoration: none;
-  font-size: clamp(16px, 3vw, 18px);
-  font-weight: 500;
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: color var(--lg-glass-transition);
   display: block;
 }
 
 .portfolio-links a:hover {
-  color: var(--lg-palette-text-on-surface-secondary);
+  opacity: 0.8;
 }
 
 .portfolio-link {
@@ -398,6 +392,7 @@ body:not(.layout-fullscreen) {
 .project-title {
   font-weight: 600;
   font-size: clamp(18px, 3.5vw, 20px);
+  color: var(--lg-palette-text-on-surface-secondary);
 }
 
 .portfolio-item {
@@ -424,8 +419,8 @@ body:not(.layout-fullscreen) {
 /* Desktop-specific positioning for demo-container */
 @media (min-width: 769px) {
   .demo-container.layout-list {
-    width: 55%;
-    margin-left: 40px;
+    width: 45%;
+    margin-left: 5%;
     margin-right: auto;
   }
 }
@@ -433,6 +428,27 @@ body:not(.layout-fullscreen) {
 .layout-list .portfolio-section:last-child,
 .demo-container.layout-list .demo-section:last-child {
   padding-bottom: 0;
+}
+
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  padding-bottom: 40px; /* Give some breathing room at the bottom */
+}
+
+/* Custom scrollbar for webkit */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background: var(--lg-glass-border);
+  border-radius: 4px;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--lg-palette-text-secondary);
 }
 
 .layout-list .card,
@@ -548,17 +564,22 @@ body:not(.layout-fullscreen) {
     gap: 12px;
   }
 
-  .layout-hero .card-actions a {
+  .layout-hero .card-actions a,
+  .layout-list .card-actions a {
     width: 100%;
   }
 
-  .layout-hero .card-actions .button {
+  .layout-hero .card-actions .button,
+  .layout-list .card-actions .button {
     width: 100%; /* Make buttons full width on mobile for better tap targets */
   }
 
   .portfolio-container,
+  .demo-container.layout-list,
   .demo-container {
     grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 

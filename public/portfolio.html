@@ -15,75 +15,107 @@
         <a href="./portfolio.html">portfolio</a>
       </nav>
     </header>
-    <main class="demo-container layout-list">
-      <section class="demo-section">
+    <main class="demo-container layout-list scrollable">
+      <h3>Portfolio</h3>
+      <section class="demo-section portfolio-links">
         <article class="card card-elevated">
+          <img src="./assets/card-media-cup.png" class="media" alt="Cup App" />
           <div class="content">
-            <h3>Portfolio</h3>
-            <div class="portfolio-links">
-              <div class="portfolio-item">
-                <a
-                  href="https://gist.github.com/sds-smith/10fe680d85823d0d3ee60045382f3c0b"
-                  target="_blank"
-                  class="portfolio-link"
-                >
-                  <span class="project-title">Cup</span>
-                  <p class="portfolio-description">
-                    A social media application for coffee lovers built on the AT
-                    Protocol (the same technology powering Bluesky).
-                  </p>
-                  <p class="portfolio-description">
-                    CUP allows authenticated users to create posts (called
-                    check-ins) about the coffee they are drinking, detailing the
-                    coffee name, roast level, brewing method, and more. Users
-                    can view a federated feed of check-ins from other coffee
-                    obsessives.
-                  </p>
-                </a>
-              </div>
-              <div class="portfolio-item">
-                <a
-                  href="https://github.com/metamatopoeia/liquid-glass-ui"
-                  target="_blank"
-                  class="portfolio-link"
-                >
-                  <span class="project-title">Liquid Glass UI</span>
-                  <p class="portfolio-description">
-                    A React component library for building interfaces with
-                    translucent, depth-aware surfaces inspired by the Liquid
-                    Glass design language. Built on Radix UI primitives,
-                    featuring zero-runtime CSS generation with CSS Variables and
-                    CSS Modules, and bundled with tsup.
-                  </p>
-                </a>
-              </div>
-              <div class="portfolio-item">
-                <a
-                  href="https://github.com/sds-smith/discover-breweries"
-                  target="_blank"
-                  class="portfolio-link"
-                >
-                  <span class="project-title">Discover Breweries</span>
-                  <p class="portfolio-description">
-                    A brewery locator app built with React, TypeScript, and
-                    serverless AWS Lambda functions. Powered by the
-                    OpenBreweryDB API and MongoDB.
-                  </p>
-                </a>
-              </div>
-              <div class="portfolio-item">
-                <a
-                  href="https://github.com/sds-smith/assemble_the_jams_3"
-                  target="_blank"
-                  class="portfolio-link"
-                >
-                  <span class="project-title">Assemble the Jams</span>
-                  <p class="portfolio-description">
-                    A playlist generator Express app with React frontend,
-                    powered by the Spotify API.
-                  </p>
-                </a>
-              </div>
+            <span class="project-title">Cup</span>
+            <p class="portfolio-description">
+              A social media application for coffee lovers built on the AT
+              Protocol (the same technology powering Bluesky).
+            </p>
+            <p class="portfolio-description">
+              CUP allows authenticated users to create posts (called check-ins)
+              about the coffee they are drinking, detailing the coffee name,
+              roast level, brewing method, and more. Users can view a federated
+              feed of check-ins from other coffee obsessives.
+            </p>
+            <div class="card-actions">
+              <a
+                href="https://gist.github.com/sds-smith/10fe680d85823d0d3ee60045382f3c0b"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button class="button">View Source Code</button>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-elevated">
+          <img
+            src="./assets/card-media-liquid-glass-ui.png"
+            class="media"
+            alt="Liquid Glass UI"
+          />
+          <div class="content">
+            <span class="project-title">Liquid Glass UI</span>
+            <p class="portfolio-description">
+              A React component library for building interfaces with
+              translucent, depth-aware surfaces inspired by the Liquid Glass
+              design language. Built on Radix UI primitives, featuring
+              zero-runtime CSS generation with CSS Variables and CSS Modules,
+              and bundled with tsup.
+            </p>
+            <div class="card-actions">
+              <a
+                href="https://github.com/metamatopoeia/liquid-glass-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button class="button">View Source Code</button>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-elevated">
+          <img
+            src="./assets/card-media-discover-breweries.png"
+            class="media"
+            alt="Discover Breweries"
+          />
+          <div class="content">
+            <span class="project-title">Discover Breweries</span>
+            <p class="portfolio-description">
+              A brewery locator app built with React, TypeScript, and serverless
+              AWS Lambda functions. Powered by the OpenBreweryDB API and
+              MongoDB.
+            </p>
+            <div class="card-actions">
+              <a
+                href="https://github.com/sds-smith/discover-breweries"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button class="button">View Source Code</button>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-elevated">
+          <img
+            src="./assets/card-media-atj.png"
+            class="media"
+            alt="Assemble the Jams"
+          />
+          <div class="content">
+            <span class="project-title">Assemble the Jams</span>
+            <p class="portfolio-description">
+              A playlist generator Express app with React frontend, powered by
+              the Spotify API.
+            </p>
+            <div class="card-actions">
+              <a
+                href="https://github.com/sds-smith/assemble_the_jams_3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button class="button">View Source Code</button>
+              </a>
             </div>
           </div>
         </article>
