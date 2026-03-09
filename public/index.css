@@ -115,6 +115,8 @@ body::before {
 }
 
 header {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center; 
@@ -431,24 +433,24 @@ body:not(.layout-fullscreen) {
 }
 
 .scrollable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 1; /* In front of background (-1), behind header (10) */
+  padding-top: 120px; /* Space for the header */
   overflow-y: auto;
-  scrollbar-width: thin; /* Firefox */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
   padding-bottom: 40px; /* Give some breathing room at the bottom */
 }
 
-/* Custom scrollbar for webkit */
+/* Hide scrollbar for WebKit browsers */
 .scrollable::-webkit-scrollbar {
-  width: 8px;
-}
-.scrollable::-webkit-scrollbar-track {
-  background: transparent;
-}
-.scrollable::-webkit-scrollbar-thumb {
-  background: var(--lg-glass-border);
-  border-radius: 4px;
-}
-.scrollable::-webkit-scrollbar-thumb:hover {
-  background: var(--lg-palette-text-secondary);
+  display: none;
 }
 
 .layout-list .card,
@@ -501,6 +503,15 @@ body:not(.layout-fullscreen) {
     flex-direction: column;
     padding: 1rem;
     gap: 16px;
+  }
+
+  .scrollable {
+    position: static;
+    height: auto;
+    overflow-y: visible;
+    padding-top: 0;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   nav {
