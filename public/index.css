@@ -106,7 +106,7 @@ body::before {
   z-index: -1;
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("./IMG_5072.jpeg"), var(--lg-palette-background-fallback);
+    url("./background-image-profile.jpeg"), var(--lg-palette-background-fallback);
   background-size: auto 100vh;
   background-position: right;
   background-repeat: no-repeat;
