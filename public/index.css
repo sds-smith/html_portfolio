@@ -68,6 +68,12 @@
   :root {
     --lg-glass-transition-duration: 0ms;
   }
+
+  html,
+  body,
+  .scrollable {
+    scroll-behavior: auto;
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {
@@ -88,6 +94,7 @@ body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -106,7 +113,8 @@ body::before {
   z-index: -1;
   background:
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("./assets/background-image-profile.jpeg"), var(--lg-palette-background-fallback);
+    url("./assets/background-image-profile.jpeg"),
+    var(--lg-palette-background-fallback);
   background-size: auto 100vh;
   background-position: right;
   background-repeat: no-repeat;
@@ -115,25 +123,31 @@ body::before {
 }
 
 header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 1rem 2rem;
+  pointer-events: none;
   /* background: var(--lg-palette-surface, transparent); */
+}
+
+header * {
+  pointer-events: auto;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
-  padding: 1rem; 
+  align-items: center;
+  padding: 1rem;
 }
 
 nav a {
   color: var(--lg-palette-text-on-surface-secondary);
-  text-decoration: none; 
+  text-decoration: none;
   cursor: pointer;
   padding: 0 8px;
 }
@@ -305,7 +319,7 @@ body:not(.layout-fullscreen) {
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-width: 100%; 
+  max-width: 100%;
   min-height: 0;
 }
 
@@ -319,7 +333,7 @@ body:not(.layout-fullscreen) {
   min-height: 0;
   overflow: hidden;
   isolation: isolate;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .layout-hero .card .media {
@@ -433,7 +447,7 @@ body:not(.layout-fullscreen) {
 }
 
 .scrollable {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -443,6 +457,7 @@ body:not(.layout-fullscreen) {
   z-index: 1; /* In front of background (-1), behind header (10) */
   padding-top: 120px; /* Space for the header */
   overflow-y: auto;
+  scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   padding-bottom: 40px; /* Give some breathing room at the bottom */
@@ -556,7 +571,7 @@ body:not(.layout-fullscreen) {
   .layout-hero .card p {
     -webkit-line-clamp: unset;
     line-clamp: none;
-    font-size: 16px;  
+    font-size: 16px;
     line-height: 1.6;
   }
 
@@ -865,7 +880,9 @@ body:not(.layout-fullscreen) {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 150ms ease, border-color 150ms ease;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease;
   user-select: none;
 }
 
@@ -887,7 +904,10 @@ body:not(.layout-fullscreen) {
   width: 300px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0 1px 10px 0px rgba(0, 0, 0, 0.12);
   padding: 16px;
   font-size: 0.8rem;
   color: var(--lg-palette-text-primary);
@@ -895,7 +915,10 @@ body:not(.layout-fullscreen) {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 150ms ease, visibility 150ms ease, transform 150ms ease;
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease,
+    transform 150ms ease;
   pointer-events: none;
 }
 
