@@ -3,3 +3,16 @@
 
 # macOS
 .DS_Store
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+.specify/
+.windsurf/
