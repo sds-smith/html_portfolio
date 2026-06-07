@@ -14,5 +14,5 @@ env/
 venv/
 .venv/
 
-.specify/
+# .specify/
 .windsurf/
