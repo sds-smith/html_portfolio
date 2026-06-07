@@ -1,15 +1,19 @@
 <!--
   Sync Impact Report
-  Version change: N/A → 1.0.0 (initial authoring from blank template)
-  Modified principles: None — all newly defined
-  Added sections: Core Principles (I–V), Technical Constraints, Design & Brand Standards, Governance
+  Version change: 1.0.0 → 1.0.1 (clarify mailto compliance)
+  Modified principles:
+    - II. Zero External Dependencies — clarified that user-initiated mailto: links
+      are compliant because they do not load remote assets during page render
+    - Technical Constraints / Assets — narrowed passive asset restrictions and
+      explicitly permits mailto: href values for direct-contact CTAs
+  Added sections: None
   Removed sections: None (template placeholders replaced in full)
   Templates reviewed:
     - .specify/templates/plan-template.md ✅ no changes needed (Constitution Check gates are resolved at /speckit.plan time)
     - .specify/templates/spec-template.md ✅ no changes needed (generic structure compatible with static-site features)
     - .specify/templates/tasks-template.md ✅ no changes needed (test tasks marked OPTIONAL; aligned with zero-dependency posture)
-    - .specify/templates/checklist-template.md ✅ no changes needed (generic, filled per feature)
-    - .specify/extensions/git/commands/*.md ✅ no agent-specific (CLAUDE-only) references found
+    - .specify/templates/commands/*.md ✅ not present
+    - README.md ✅ no changes needed (dependency language remains compatible)
   Follow-up TODOs: None — all placeholders resolved.
 -->
 
@@ -25,7 +29,7 @@ All styling, visual effects, and interactive states MUST be implemented in CSS. 
 
 ### II. Zero External Dependencies
 
-The site MUST be fully functional by opening any HTML file directly in a browser with zero outbound network requests. CDN resources, npm packages, web fonts from third-party hosts, analytics scripts, icon libraries, and build tools are all prohibited. Every asset MUST be self-contained within the repository.
+The site MUST be fully functional by opening any HTML file directly in a browser with zero outbound network requests during initial page load and passive rendering. CDN resources, npm packages, web fonts from third-party hosts, analytics scripts, icon libraries, and build tools are all prohibited. Every asset MUST be self-contained within the repository. User-initiated `mailto:` links are permitted for direct-contact actions because they do not load remote assets during page rendering and do not introduce runtime dependencies.
 
 **Rationale**: External dependencies introduce latency, privacy exposure, and supply-chain risk, and break the zero-dependency claim that is central to the project's technical identity.
 
@@ -55,7 +59,7 @@ The technology stack is fixed and non-negotiable:
 - **Styling**: Vanilla CSS with custom properties; no preprocessors (Sass, Less, PostCSS)
 - **Scripting**: Inline or `<script>`-embedded vanilla JavaScript; ≤30 lines total; no `import` or `require`
 - **Delivery**: Static files served directly from `public/`; no build step, no server-side rendering, no bundler
-- **Assets**: Local only — no external URLs in `src`, `href`, or `url()` references
+- **Assets**: Local only — no external URLs in `src` or `url()` references. `mailto:` values are permitted in `href` attributes when used for explicit user-initiated direct-contact CTAs.
 
 Any deviation MUST be documented in the plan's Complexity Tracking table with explicit justification and explicit user approval before implementation.
 
@@ -79,4 +83,4 @@ Amendment procedure:
 
 All feature specifications (`spec.md`) and implementation plans (`plan.md`) MUST include a **Constitution Check** verifying compliance with Principles I–V before work begins. Any approved violations MUST be documented in the Complexity Tracking table of `plan.md`.
 
-**Version**: 1.0.0 | **Ratified**: 2026-06-07 | **Last Amended**: 2026-06-07
+**Version**: 1.0.1 | **Ratified**: 2026-06-07 | **Last Amended**: 2026-06-07
