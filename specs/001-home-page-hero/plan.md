@@ -7,10 +7,11 @@
 
 ## Summary
 
-Replace the empty `<main>` on `public/index.html` with a three-section scrolling page:  
-1. **Hero** (above the fold) — identity claim, lead paragraph, primary CTA, secondary nav links  
-2. **Proof Pillars** (below fold) — three glass cards validating the Product Builder positioning  
-3. **Portfolio Teaser** (below pillars) — two featured project cards + link to full portfolio  
+Replace the empty `<main>` on `public/index.html` with a three-section scrolling page:
+
+1. **Hero** (above the fold) — identity claim, lead paragraph, primary CTA, secondary nav links
+2. **Proof Pillars** (below fold) — three glass cards validating the Product Builder positioning
+3. **Portfolio Teaser** (below pillars) — two featured project cards + link to full portfolio
 
 All work is pure HTML5 + CSS3. Zero new JavaScript. Two files touched: `public/index.html` and `public/index.css`.
 
@@ -24,26 +25,26 @@ All work is pure HTML5 + CSS3. Zero new JavaScript. Two files touched: `public/i
 **Testing**: Manual browser testing; visual inspection at 375px, 768px, 1280px, 1440px viewports; DevTools Network tab (verify zero outbound requests)  
 **Target Platform**: Static file served directly from `public/`; no build step  
 **Project Type**: Static web page  
-**Performance Goals**: Zero network requests on load; page content visible in <100ms (local file)  
-**Constraints**: JS ≤30 lines total (23 used by SpeedDial — **0 new lines permitted**); no CDN; no external URLs; CSS-first  
-**Scale/Scope**: 3 sections, ~6 new CSS classes, 2 files modified
+**Performance Goals**: Zero outbound network requests during initial page load and passive rendering  
+**Constraints**: JS ≤30 lines total (23 used by SpeedDial — **0 new lines permitted**); no CDN; no external asset URLs; `mailto:` direct-contact links are compliant under Constitution v1.0.1; CSS-first  
+**Scale/Scope**: 3 sections, ~10 new CSS classes, 2 source files modified
 
 ---
 
 ## Constitution Check
 
-*GATE: Must pass before implementation begins.*
+_GATE: Must pass before implementation begins._
 
-| Principle | Status | Notes |
-|---|---|---|
-| I. CSS-First, HTML-Native | ✅ PASS | Zero new JS. All layout, styling, and interaction via HTML + CSS only. |
-| II. Zero External Dependencies | ✅ PASS | No new external URLs. All assets already local. |
-| III. Brand Integrity | ✅ PASS | All copy directly reinforces "Product Builder grounded in Software Engineering." |
-| IV. Minimalist Excellence | ✅ PASS | Each section and element has a defined, non-decorative purpose. |
-| V. Accessibility & Graceful Degradation | ✅ PASS | Semantic HTML5, WCAG 2.1 AA contrast, dark mode via existing tokens, reduced-motion inherited. |
+| Principle                               | Status  | Notes                                                                                                                         |
+| --------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| I. CSS-First, HTML-Native               | ✅ PASS | Zero new JS. All layout, styling, and interaction via HTML + CSS only.                                                        |
+| II. Zero External Dependencies          | ✅ PASS | No new external asset URLs. All assets already local. `mailto:` direct-contact links are compliant under Constitution v1.0.1. |
+| III. Brand Integrity                    | ✅ PASS | All copy directly reinforces "Product Builder grounded in Software Engineering."                                              |
+| IV. Minimalist Excellence               | ✅ PASS | Each section and element has a defined, non-decorative purpose.                                                               |
+| V. Accessibility & Graceful Degradation | ✅ PASS | Semantic HTML5, WCAG 2.1 AA contrast, dark mode via existing tokens, reduced-motion inherited.                                |
 
-**Approved Deviation**:  
-Removing `body.layout-fullscreen` is a layout model change (scroll vs. viewport-lock), not a stack violation. Documented per governance procedure. The existing `body:not(.layout-fullscreen)` CSS rule handles padding automatically.
+**Approved Layout Decision**:  
+Removing `body.layout-fullscreen` is a constitution-compliant layout model change (scroll vs. viewport-lock), not a stack violation. The existing `body:not(.layout-fullscreen)` CSS rule handles padding automatically.
 
 ---
 
@@ -79,6 +80,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 #### New classes required
 
 **`.home-hero`** — Hero section layout
+
 ```css
 .home-hero {
   min-height: 100svh;
@@ -89,9 +91,11 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
   max-width: 720px;
 }
 ```
-*Rationale*: Replaces the role of `.layout-hero.portfolio-container`. The `max-width` keeps copy left-weighted so the profile photo remains visible in the background.
+
+_Rationale_: Replaces the role of `.layout-hero.portfolio-container`. The `max-width` keeps copy left-weighted so the profile photo remains visible in the background.
 
 **`.home-hero h1`** — Headline typography
+
 ```css
 .home-hero h1 {
   font-size: clamp(28px, 5vw, 48px);
@@ -103,6 +107,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-hero-lead`** — Lead paragraph
+
 ```css
 .home-hero-lead {
   font-size: clamp(15px, 2vw, 17px);
@@ -114,6 +119,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-cta-group`** — CTA + secondary links container
+
 ```css
 .home-cta-group {
   display: flex;
@@ -124,6 +130,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.button-cta`** — Primary CTA button (glass, elevated prominence)
+
 ```css
 .button-cta {
   display: inline-flex;
@@ -149,7 +156,9 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 
 .button-cta:hover {
   --lg-glass-bg-opacity: 0.38;
-  box-shadow: var(--lg-glass-shadow-soft), inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow:
+    var(--lg-glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .button-cta:active {
@@ -163,6 +172,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-secondary-links`** — Secondary text link group
+
 ```css
 .home-secondary-links {
   display: flex;
@@ -183,6 +193,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-section`** — Shared section wrapper (Sections 2 and 3)
+
 ```css
 .home-section {
   padding: 80px 40px;
@@ -193,6 +204,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-section-header`** — Section heading (h2)
+
 ```css
 .home-section-header {
   font-size: clamp(20px, 3vw, 26px);
@@ -203,6 +215,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-pillars`** — Three-column card grid (Section 2)
+
 ```css
 .home-pillars {
   display: grid;
@@ -212,6 +225,7 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-teaser-grid`** — Two-column card grid (Section 3)
+
 ```css
 .home-teaser-grid {
   display: grid;
@@ -222,13 +236,15 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ```
 
 **`.home-teaser-cta`** — "Explore All Projects" link group
+
 ```css
 .home-teaser-cta {
   display: flex;
 }
 ```
 
-#### Mobile overrides (appended to existing `@media (max-width: 768px)` block)
+#### Mobile overrides (appended in a new `@media (max-width: 768px)` block)
+
 ```css
 .home-hero {
   padding: 40px 20px;
@@ -252,12 +268,13 @@ All new CSS classes are appended to `public/index.css`. Existing classes are not
 ### Phase 2 — HTML Structure (index.html)
 
 #### Body class change
+
 ```html
 <!-- BEFORE -->
 <body class="layout-fullscreen">
-
-<!-- AFTER -->
-<body>
+  <!-- AFTER -->
+  <body></body>
+</body>
 ```
 
 #### `<main>` replacement — full structure
@@ -271,10 +288,10 @@ The empty `<main class="portfolio-container layout-hero">` is replaced with:
     <h1>Architecting Products. Engineering Solutions.</h1>
     <p class="home-hero-lead">
       With a decade of high-volume operational leadership, I don't just write
-      code — I partner in discovery, shape UI/UX, and deliver the final
-      product. I build high-fidelity, human-centered web applications by
-      combining robust React and TypeScript ecosystems with forward-thinking
-      agentic orchestration.
+      code — I partner in discovery, shape UI/UX, and deliver the final product.
+      I build high-fidelity, human-centered web applications by combining robust
+      React and TypeScript ecosystems with forward-thinking agentic
+      orchestration.
     </p>
     <div class="home-cta-group">
       <a href="mailto:sds.smith24@gmail.com" class="button-cta">
@@ -293,28 +310,34 @@ The empty `<main class="portfolio-container layout-hero">` is replaced with:
       <article class="card card-elevated">
         <div class="content">
           <h3>The Product Mindset</h3>
-          <p>Great software bridges the gap between deterministic constraints
-          and infinite possibility. I listen to understand the human goal
-          first, ensuring technical architecture aligns seamlessly with user
-          needs and business objectives.</p>
+          <p>
+            Great software bridges the gap between deterministic constraints and
+            infinite possibility. I listen to understand the human goal first,
+            ensuring technical architecture aligns seamlessly with user needs
+            and business objectives.
+          </p>
         </div>
       </article>
       <article class="card card-elevated">
         <div class="content">
           <h3>High-Fidelity Engineering</h3>
-          <p>Specializing in strong JavaScript fundamentals and modern
-          TypeScript ecosystems. I construct scalable, decentralized
-          applications and craft depth-aware, glassmorphic interfaces that
-          prioritize a flawless user experience.</p>
+          <p>
+            Specializing in strong JavaScript fundamentals and modern TypeScript
+            ecosystems. I construct scalable, decentralized applications and
+            craft depth-aware, glassmorphic interfaces that prioritize a
+            flawless user experience.
+          </p>
         </div>
       </article>
       <article class="card card-elevated">
         <div class="content">
           <h3>Agentic Orchestration</h3>
-          <p>I leverage AI beyond basic chat. By designing custom
-          spec-driven workflows and structured system prompts, I use
-          generative models as dedicated engineering assistants to
-          accelerate platform modernization and system re-engineering.</p>
+          <p>
+            I leverage AI beyond basic chat. By designing custom spec-driven
+            workflows and structured system prompts, I use generative models as
+            dedicated engineering assistants to accelerate platform
+            modernization and system re-engineering.
+          </p>
         </div>
       </article>
     </div>
@@ -327,17 +350,21 @@ The empty `<main class="portfolio-container layout-hero">` is replaced with:
       <article class="card card-elevated">
         <div class="content">
           <h3>Cup</h3>
-          <p>A cloud-native social media suite built on the AT Protocol —
-          schema-driven XRPC architecture, federated data flows, and
-          glassmorphic UI components.</p>
+          <p>
+            A cloud-native social media suite built on the AT Protocol —
+            schema-driven XRPC architecture, federated data flows, and
+            glassmorphic UI components.
+          </p>
         </div>
       </article>
       <article class="card card-elevated">
         <div class="content">
           <h3>Wine Rack</h3>
-          <p>A multi-tenant wine inventory tracker powered by an
-          orchestrated system of specialized Gemini agents: Sommelier,
-          Critic Research, and OCR Entry.</p>
+          <p>
+            A multi-tenant wine inventory tracker powered by an orchestrated
+            system of specialized Gemini agents: Sommelier, Critic Research, and
+            OCR Entry.
+          </p>
         </div>
       </article>
     </div>

@@ -9,15 +9,15 @@
 
 ## Constitution Check
 
-| Principle                               | Status | Notes                                                                                                                          |
-| --------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| I. CSS-First, HTML-Native               | ✅     | No new JS. SpeedDial script remains at 23 lines (within ≤30 limit). All tiers implemented in semantic HTML + CSS only.         |
-| II. Zero External Dependencies          | ✅     | No CDN, no web fonts, no external URLs in markup or CSS. All assets already local.                                             |
-| III. Brand Integrity                    | ✅     | Feature is the primary brand expression. Every content decision reinforces "Product Builder grounded in Software Engineering." |
-| IV. Minimalist Excellence               | ✅     | Three sections, each with a defined purpose. No decoration without function. Copy is precise and intentional.                  |
-| V. Accessibility & Graceful Degradation | ✅     | Semantic HTML5 elements, WCAG 2.1 AA contrast, dark mode via existing tokens, `prefers-reduced-motion` inherited.              |
+| Principle                               | Status | Notes                                                                                                                                    |
+| --------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| I. CSS-First, HTML-Native               | ✅     | No new JS. SpeedDial script remains at 23 lines (within ≤30 limit). All tiers implemented in semantic HTML + CSS only.                   |
+| II. Zero External Dependencies          | ✅     | No CDN, no web fonts, and no outbound requests during page load. `mailto:` direct-contact links are compliant under Constitution v1.0.1. |
+| III. Brand Integrity                    | ✅     | Feature is the primary brand expression. Every content decision reinforces "Product Builder grounded in Software Engineering."           |
+| IV. Minimalist Excellence               | ✅     | Three sections, each with a defined purpose. No decoration without function. Copy is precise and intentional.                            |
+| V. Accessibility & Graceful Degradation | ✅     | Semantic HTML5 elements, WCAG 2.1 AA contrast, dark mode via existing tokens, `prefers-reduced-motion` inherited.                        |
 
-**Approved Deviation**: Removing `body.layout-fullscreen` from `index.html` to enable multi-section vertical scroll. This is a layout model change, not a stack change. No new CSS primitives required — existing `.scrollable` and `body:not(.layout-fullscreen)` rules already handle this pattern.
+**Approved Layout Decision**: Removing `body.layout-fullscreen` from `index.html` enables multi-section vertical scroll. This is a constitution-compliant layout model change, not a stack deviation. No new CSS primitives required — existing `.scrollable` and `body:not(.layout-fullscreen)` rules already handle this pattern.
 
 ---
 
@@ -29,13 +29,13 @@ A recruiter lands on the home page for the first time. Within 5 seconds they und
 
 **Why this priority**: The hero is the only content guaranteed to be seen. If the positioning and CTA are not above the fold, the feature fails its primary goal.
 
-**Independent Test**: Open `index.html` in a browser at 1280×800 viewport. Without scrolling, the H1, lead paragraph, primary CTA button, and secondary text links are all visible and functional.
+**Independent Test**: Open `index.html` in a browser at 1280×800 viewport. Without scrolling, the H1, lead paragraph, primary CTA button, and secondary text links are visible. The primary CTA opens a mail client, "Read the Philosophy" routes to `about.html`, and "View the Work" targets the in-page `#portfolio-teaser` fragment without routing away from the page.
 
 **Acceptance Scenarios**:
 
 1. **Given** a recruiter opens `index.html`, **When** the page loads, **Then** the H1 "Architecting Products. Engineering Solutions." is the first prominent text they see.
 2. **Given** a recruiter is on the hero, **When** they click "Let's Start a Conversation", **Then** their default mail client opens a new email addressed to `sds.smith24@gmail.com`.
-3. **Given** a recruiter is on the hero, **When** they click "View the Work", **Then** the page smooth-scrolls to the Portfolio Teaser section.
+3. **Given** a recruiter is on the hero, **When** they inspect or activate "View the Work", **Then** the link targets the in-page `#portfolio-teaser` fragment without routing away from `index.html`.
 4. **Given** a recruiter is on the hero, **When** they click "Read the Philosophy", **Then** they are routed to `about.html`.
 
 ---
@@ -85,7 +85,7 @@ After reading the pillars, a recruiter wants to see actual work before reaching 
 
 ### Functional Requirements
 
-- **FR-001**: `index.html` MUST render a hero section (Section 1) that is fully visible without scrolling at a 1280×800 desktop viewport.
+- **FR-001**: `index.html` MUST render the hero H1, lead paragraph, primary CTA, and secondary links visibly without scrolling at a 1280×800 desktop viewport.
 - **FR-002**: Section 1 MUST contain an `<h1>` with the text "Architecting Products. Engineering Solutions."
 - **FR-003**: Section 1 MUST contain a lead paragraph establishing the Product Builder positioning and referencing operational leadership, React/TypeScript, and agentic orchestration.
 - **FR-004**: Section 1 MUST contain a primary CTA anchor styled as a glass button with text "Let's Start a Conversation" linking to `mailto:sds.smith24@gmail.com`.
@@ -94,7 +94,7 @@ After reading the pillars, a recruiter wants to see actual work before reaching 
 - **FR-007**: `index.html` MUST render a portfolio teaser section (Section 3) with the header "Built for the Human Goal", two featured project cards (Cup, Wine Rack), and a "Explore All Projects" link to `portfolio.html`.
 - **FR-008**: The page layout MUST support vertical scroll. The `layout-fullscreen` class MUST be removed from `<body>`.
 - **FR-009**: All new HTML elements MUST use semantic tags (`<section>`, `<article>`, `<h1>`–`<h3>`, `<p>`, `<a>`).
-- **FR-010**: All new visual styling MUST use existing `--lg-*` design tokens. New CSS classes MUST follow the `--lg-{group}-{subgroup}-{token}` naming convention where new tokens are required.
+- **FR-010**: All new visual styling MUST use existing `--lg-*` design tokens where possible. Any new CSS custom properties MUST follow the `--lg-{group}-{subgroup}-{token}` naming convention; CSS classes may use semantic names.
 - **FR-011**: No JavaScript MUST be added. The existing SpeedDial script (23 lines) MUST remain intact and functional.
 - **FR-012**: All new interactive elements (links, buttons) MUST be keyboard-navigable and meet WCAG 2.1 AA contrast requirements.
 

@@ -2,7 +2,8 @@
 
 **Input**: `specs/001-home-page-hero/plan.md`, `specs/001-home-page-hero/spec.md`  
 **Branch**: `001-home-page-hero`  
-**Files in scope**: `public/index.html`, `public/index.css` only
+**Implementation source paths**: `public/index.html`, `public/index.css` only  
+**Spec-Kit state exception**: `specs/001-home-page-hero/tasks.md` may be updated after implementation to reflect task completion state.
 
 ---
 
@@ -20,7 +21,7 @@
 - [ ] T008 [P] Add `.home-section-header` h2 style (`font-size: clamp(20px, 3vw, 26px)`, `font-weight: 700`, `color: var(--lg-palette-text-on-surface)`, `margin: 0 0 40px 0`) in `public/index.css`
 - [ ] T009 [P] Add `.home-pillars` three-column grid (`display: grid`, `grid-template-columns: repeat(3, 1fr)`, `gap: 24px`) in `public/index.css`
 - [ ] T010 [P] Add `.home-teaser-grid` two-column grid (`display: grid`, `grid-template-columns: repeat(2, 1fr)`, `gap: 24px`, `margin-bottom: 40px`) in `public/index.css`
-- [ ] T011 Add mobile overrides for all new classes inside the existing `@media (max-width: 768px)` block: `.home-hero` padding adjustment, `.home-pillars` and `.home-teaser-grid` collapse to `grid-template-columns: 1fr`, `.home-section` padding reduction, `.home-cta-group` column direction — in `public/index.css`
+- [ ] T011 Add mobile overrides for all new classes in a new appended `@media (max-width: 768px)` block: `.home-hero` padding adjustment, `.home-pillars` and `.home-teaser-grid` collapse to `grid-template-columns: 1fr`, `.home-section` padding reduction, `.home-cta-group` column direction — in `public/index.css`
 
 **Checkpoint**: Open `index.html` in browser — page should look unchanged (empty main). No visual regressions on About or Portfolio pages. New CSS classes exist but are unused.
 
@@ -40,14 +41,14 @@
 
 **Goal**: Above-the-fold hero with identity claim, lead paragraph, primary CTA, and secondary navigation links.
 
-**Independent Test**: Open `public/index.html` at 1280×800. Without scrolling: H1 is visible, "Let's Start a Conversation" opens mail client to `sds.smith24@gmail.com`, "View the Work" scrolls to `#portfolio-teaser` anchor (even if section doesn't exist yet, link must not 404), "Read the Philosophy" routes to `about.html`.
+**Independent Test**: Open `public/index.html` at 1280×800. Without scrolling: H1 is visible, "Let's Start a Conversation" opens mail client to `sds.smith24@gmail.com`, "View the Work" has `href="#portfolio-teaser"` and does not route away from `index.html`, and "Read the Philosophy" routes to `about.html`. Smooth-scroll behavior for `#portfolio-teaser` is validated after US3 creates the target section.
 
 - [ ] T013 [US1] Replace `<main class="portfolio-container layout-hero"></main>` with `<main>` containing a `<section class="home-hero">` in `public/index.html`
 - [ ] T014 [US1] Add `<h1>Architecting Products. Engineering Solutions.</h1>` inside `.home-hero` in `public/index.html`
 - [ ] T015 [US1] Add `<p class="home-hero-lead">` with the full lead paragraph copy inside `.home-hero` in `public/index.html`
 - [ ] T016 [US1] Add `<div class="home-cta-group">` containing the `.button-cta` mailto anchor and `.home-secondary-links` div with "View the Work" (`href="#portfolio-teaser"`) and "Read the Philosophy" (`href="./about.html"`) links inside `.home-hero` in `public/index.html`
 
-**Checkpoint (US1)**: Hero is fully visible above the fold at 1280×800. All three interactive elements (CTA + 2 secondary links) work correctly. SpeedDial still opens/closes. JS line count = 23.
+**Checkpoint (US1)**: Hero H1, lead, CTA, and secondary links are visible above the fold at 1280×800. The mailto CTA and `about.html` link work correctly; "View the Work" preserves the `#portfolio-teaser` fragment target for US3. SpeedDial still opens/closes. JS line count = 23.
 
 ---
 
@@ -59,9 +60,9 @@
 
 - [ ] T017 [US2] Add `<section class="home-section">` after the hero section in `public/index.html`
 - [ ] T018 [US2] Add `<div class="home-pillars">` containing three `<article class="card card-elevated">` elements inside the pillars section, each with a `<div class="content">`, `<h3>`, and `<p>` matching the approved copy in `public/index.html`:
-  - Card 1: **The Product Mindset** — *"Great software bridges the gap between deterministic constraints and infinite possibility. I listen to understand the human goal first, ensuring technical architecture aligns seamlessly with user needs and business objectives."*
-  - Card 2: **High-Fidelity Engineering** — *"Specializing in strong JavaScript fundamentals and modern TypeScript ecosystems. I construct scalable, decentralized applications and craft depth-aware, glassmorphic interfaces that prioritize a flawless user experience."*
-  - Card 3: **Agentic Orchestration** — *"I leverage AI beyond basic chat. By designing custom spec-driven workflows and structured system prompts, I use generative models as dedicated engineering assistants to accelerate platform modernization and system re-engineering."*
+  - Card 1: **The Product Mindset** — _"Great software bridges the gap between deterministic constraints and infinite possibility. I listen to understand the human goal first, ensuring technical architecture aligns seamlessly with user needs and business objectives."_
+  - Card 2: **High-Fidelity Engineering** — _"Specializing in strong JavaScript fundamentals and modern TypeScript ecosystems. I construct scalable, decentralized applications and craft depth-aware, glassmorphic interfaces that prioritize a flawless user experience."_
+  - Card 3: **Agentic Orchestration** — _"I leverage AI beyond basic chat. By designing custom spec-driven workflows and structured system prompts, I use generative models as dedicated engineering assistants to accelerate platform modernization and system re-engineering."_
 
 **Checkpoint (US2)**: Three pillar cards visible on desktop side-by-side. Cards stack on mobile (375px). Card glass styling matches existing `.card-elevated` pattern. Hero (US1) still fully functional.
 
@@ -76,8 +77,8 @@
 - [ ] T019 [US3] Add `<section class="home-section" id="portfolio-teaser">` after the pillars section in `public/index.html`
 - [ ] T020 [US3] Add `<h2 class="home-section-header">Built for the Human Goal</h2>` inside the portfolio teaser section in `public/index.html`
 - [ ] T021 [US3] Add `<div class="home-teaser-grid">` containing two image-free `<article class="card card-elevated">` elements, each with `<div class="content">`, `<h3>`, and `<p>` in `public/index.html`:
-  - Card 1: **Cup** — *"A cloud-native social media suite built on the AT Protocol — schema-driven XRPC architecture, federated data flows, and glassmorphic UI components."*
-  - Card 2: **Wine Rack** — *"A multi-tenant wine inventory tracker powered by an orchestrated system of specialized Gemini agents: Sommelier, Critic Research, and OCR Entry."*
+  - Card 1: **Cup** — _"A cloud-native social media suite built on the AT Protocol — schema-driven XRPC architecture, federated data flows, and glassmorphic UI components."_
+  - Card 2: **Wine Rack** — _"A multi-tenant wine inventory tracker powered by an orchestrated system of specialized Gemini agents: Sommelier, Critic Research, and OCR Entry."_
 - [ ] T022 [US3] Add `<div class="home-teaser-cta">` containing `<a href="./portfolio.html" class="button-cta">Explore All Projects</a>` below the teaser grid in `public/index.html`
 
 **Checkpoint (US3)**: "View the Work" anchor from the hero smooth-scrolls to this section. Both project cards visible. "Explore All Projects" routes to `portfolio.html`. All three sections render correctly end-to-end.
