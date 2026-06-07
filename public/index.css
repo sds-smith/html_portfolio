@@ -859,3 +859,158 @@ body:not(.layout-fullscreen) {
     left: 16px;
   }
 }
+
+/* ============================================================
+   Home Page — Three-Tier Hero
+   ============================================================ */
+
+/* T001 — Hero section layout */
+.home-hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  max-width: 720px;
+}
+
+/* T002 — Hero headline */
+.home-hero h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--lg-palette-text-on-surface);
+  margin: 0 0 20px 0;
+  line-height: 1.15;
+}
+
+/* T003 — Lead paragraph */
+.home-hero-lead {
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.65;
+  color: var(--lg-palette-text-on-surface-secondary);
+  margin: 0 0 32px 0;
+  max-width: 600px;
+}
+
+/* T004 — CTA + secondary links container */
+.home-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* T005 — Primary CTA glass button */
+.button-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 1px solid var(--lg-glass-border);
+  --lg-glass-bg-opacity: 0.25;
+  background: var(--lg-glass-surface);
+  backdrop-filter: blur(var(--lg-glass-blur));
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur));
+  color: var(--lg-palette-text-on-surface);
+  font-family: var(--lg-typography-font-family);
+  font-size: clamp(14px, 2vw, 15px);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--lg-glass-transition);
+  box-shadow: var(--lg-glass-shadow-soft);
+  white-space: nowrap;
+}
+
+.button-cta:hover {
+  --lg-glass-bg-opacity: 0.38;
+  box-shadow:
+    var(--lg-glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.button-cta:active {
+  transform: scale(0.97);
+}
+
+.button-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--lg-glass-border);
+}
+
+/* T006 — Secondary text links */
+.home-secondary-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.home-secondary-links a {
+  color: var(--lg-palette-text-on-surface-secondary);
+  text-decoration: none;
+  font-size: clamp(13px, 2vw, 14px);
+  transition: opacity var(--lg-glass-transition);
+}
+
+.home-secondary-links a:hover {
+  opacity: 0.7;
+}
+
+/* T007 — Shared section wrapper (Sections 2 & 3) */
+.home-section {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* T008 — Section heading */
+.home-section-header {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  color: var(--lg-palette-text-on-surface);
+  margin: 0 0 40px 0;
+}
+
+/* T009 — Three-column pillar grid */
+.home-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* T010 — Two-column teaser grid */
+.home-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* T010 — Teaser CTA row */
+.home-teaser-cta {
+  display: flex;
+}
+
+/* T011 — Mobile overrides */
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 40px 20px;
+    min-height: 100svh;
+  }
+
+  .home-pillars,
+  .home-teaser-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-section {
+    padding: 60px 20px;
+  }
+
+  .home-cta-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
